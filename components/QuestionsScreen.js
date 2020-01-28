@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, StatusBar, Image, Text, Picker } from 'react-native';
-import { Appbar, Button } from 'react-native-paper';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { Button, ProgressBar } from 'react-native-paper';
 import { styles } from '../styles/StyleSheet';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import QuestionTitle from './QuestionTitle';
+import AppBar from './AppBar';
+import ButtonBar from './ButtonBar';
+import Statusbar from './Statusbar';
+import QuestionOptions from './QuestionOptions';
 
-import * as Font from 'expo-font';
-
-export default class QuestionsScreen extends React.Component {
+class QuestionsScreen extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -19,27 +22,28 @@ export default class QuestionsScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.questionsView}>
-				 <Appbar dark={true} >
-				 	<Appbar.BackAction onPress= {this.onPress}/>
-				 	<Appbar.Content title="Datalergy"/>
-			     </Appbar>
-			      <View style={styles.questions}>
-			      	<DateTimePicker value={new Date()}
-                    mode="time"
-                    is24Hour={false}
-                    display="default"
-                     />
-			      </View>
-				<View style={styles.buttonBar}>
-					<Button mode="contained" dark={true} onPress= {this.onPress} color="#739CCF">
-	    				Previous
-	  				</Button>
-					<Button mode="contained" dark={true} onPress= {this.onPress} color="#739CCF">
-	    				Next
-	  				</Button>
-
-				</View>
+				<Statusbar />
+				<AppBar navigation={this.props.navigation}/>
+				<View><ProgressBar progress={(this.props.currentQuestion + 1)/5} color="red"/></View>
+			    
+			    <QuestionTitle 
+			    	question={this.props.questions[this.props.currentQuestion].question} 
+			    	currentQuestion = {	this.props.currentQuestion}
+			    />
+			    <QuestionOptions 
+			    	options={this.props.questions[this.props.currentQuestion].options}
+			    	currentQuestion = {this.props.currentQuestion}
+			    />
+				<ButtonBar currentQuestion = {this.props.currentQuestion} dispatch={this.props.dispatch}/>
 			</View>
 		);
 	}
 }
+
+function mapStateToProps(state) {
+  return {
+    ...state
+  };
+}
+
+export default connect(mapStateToProps)(QuestionsScreen);

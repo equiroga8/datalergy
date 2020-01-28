@@ -64,7 +64,7 @@ export default class ReduxProvider extends React.Component {
 
 	const theme = {
 	  ...DefaultTheme,
-	  roundness: 10,
+	  roundness: 5,
 	  colors: {
 	    ...DefaultTheme.colors,
 	    primary: '#739CCF',

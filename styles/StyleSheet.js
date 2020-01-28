@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 
 
 export const styles = StyleSheet.create({
@@ -19,17 +20,64 @@ export const styles = StyleSheet.create({
     height: 200,
     alignSelf: 'center'
   },
-  buttonBar: {
-    flex:1, 
-    flexDirection: 'row',
-     justifyContent: 'space-around',
-     alignItems: 'flex-start',
-
-  }, 
   questionsView: {
-    flex:1
+    flex:1,
+    paddingTop: StatusBar.currentHeight || 0
   },
-  questions: {
-    flex:5
-  }
+  questionTitle: {
+    flex:1,
+    flexDirection: 'column',
+    paddingLeft: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingRight: 15,
+    //backgroundColor: 'lightgreen',
+    justifyContent: 'space-around'
+  },
+
+  questionText: {
+    fontSize: 20,
+    fontWeight: '100'
+  },
+  numberText: {
+    color: 'grey'
+  },
+  questionOptions: {
+    flex: 6,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    //backgroundColor: 'lavenderblush',
+    paddingLeft: 0,
+    paddingTop: 0,
+    paddingBottom: 10,
+    paddingRight: 15,
+  },
+
+  optionView: {
+    flex:1,
+    flexDirection: 'row',
+    padding: 10,
+    //borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+
+  optionText: {
+    color: 'grey',
+    fontSize: 20,
+  },
+
+  buttonBar: {
+    flex:3, 
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+    paddingTop: 10,
+    //backgroundColor: 'lightcoral'
+
+  },
+  actionButton: {
+    width: 120
+  }, 
 });
