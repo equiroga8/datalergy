@@ -18,7 +18,7 @@ export default class AppBar extends React.Component {
 	    return (
 			<View style = {styles.appBar}>
 	       		<Appbar dark={true} >
-				 	<Appbar.BackAction onPress= {this.onPress}/>
+	       		<Appbar.Action icon="close" onPress= {this.onPress} />
 				 	<Appbar.Content title="Datalergy"/>
 				</Appbar>
 	       	</View>

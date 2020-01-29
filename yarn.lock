@@ -4261,6 +4261,13 @@ react-native-material-ui@^1.30.1:
     prop-types "^15.5.10"
     react-native-material-design-styles "^0.2.6"
 
+react-native-modal-datetime-picker@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-8.1.1.tgz#63609aff50c44cf939ab3024f185a13822b46f76"
+  integrity sha512-tZUl/GjuMGSxRNcF84nt7uKoLiyDJztdtTQ9e0dVbDFC0UduZ5bTA5DIzXiCLZCbghZuD6tPLmw5ULPXGiO7Lw==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-paper@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.5.1.tgz#1fac594d1cfdb2bb9bce37bdd48c09a1f4aed3cb"

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { QUESTION_ANSWER, CHANGE_QUESTION, SUBMIT } from './actions';
+import { QUESTION_ANSWER, CHANGE_QUESTION, SUBMIT, SHOW_TIME_PICKER, HIDE_TIME_PICKER } from './actions';
 
 
 function finished(state = false, action = {}) {
@@ -26,19 +26,26 @@ function currentQuestion(state = 0, action = {}) {
 function questions(state = [], action = {}) {
 	switch(action.type) {
 		case QUESTION_ANSWER:
-			return state.map((question, i) => {
-				return { ...question,
-						userAnswer: action.payload.index === i ?
-									action.payload.answer : question.userAnswer
-				}
-			});
+			state[action.payload.index].answer = action.payload.answer;
+			return state;
 		default:
 			return state;
 	}
 }
 
 function loading(state = false, action = {}) {
-	return state
+	return state;
+}
+
+function showTimePicker(state = false, action = {}) {
+	switch (action.type) {
+		case SHOW_TIME_PICKER:
+			return true;
+		case HIDE_TIME_PICKER:
+			return false; 
+		default:
+			return state;
+	}
 }
 
 
@@ -48,7 +55,8 @@ const GlobalState = (combineReducers({
 	finished,
 	loading, 
 	currentQuestion,
-	questions
+	questions,
+	showTimePicker
 
 }));
 

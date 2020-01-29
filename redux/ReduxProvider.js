@@ -31,12 +31,14 @@ export default class ReduxProvider extends React.Component {
 
 	constructor(props) {
 		super(props);
+
 		this.initialState = {
 
 			finished: false,  
 			loading: false,
 			currentQuestion: 0,
-			questions: [...questions]
+			questions: [...questions],
+			showTimePicker: false
 
 		};
 		

@@ -9,7 +9,13 @@ export default class RadioButtonGroup extends React.Component {
 	var options = this.props.options.map((option, index) => {
 					return (
 						<View style={styles.optionView} key={"view" + index}>
-		          			<RadioButton value={counter++} key={"rb" + index} uncheckedColor="grey"/>
+		          			<RadioButton 
+		          				value={counter++} 
+		          				key={"rb" + index} 
+		          				uncheckedColor="grey" 
+		          				color="#739CCF"
+								onPress={this.props.onChangeRadio}
+		          				/>
 		          			<Text style={styles.optionText} key={"text" + index}>{option}</Text>
 		        		</View>
 					);
@@ -18,9 +24,12 @@ export default class RadioButtonGroup extends React.Component {
     return (
 
 
-		<View style={styles.questionOptions}>
+		<View style={styles.radioButtonOptions}>
 			
-			<RadioButton.Group>
+			<RadioButton.Group 
+				value={this.props.answer}
+				onValueChange={this.props.onChangeRadio} 
+			>
 			
 		        {options}
 		       

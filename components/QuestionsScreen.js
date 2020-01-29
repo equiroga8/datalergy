@@ -14,12 +14,14 @@ class QuestionsScreen extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onPress = this.onPress.bind(this);
+
 	}
 
 	onPress(){
 		this.props.navigation.navigate('StartScreen');
 	}
 	render() {
+		console.log(this.props.questions)
 		return (
 			<View style={styles.questionsView}>
 				<Statusbar />
@@ -32,7 +34,10 @@ class QuestionsScreen extends React.Component {
 			    />
 			    <QuestionOptions 
 			    	options={this.props.questions[this.props.currentQuestion].options}
+			    	answer={this.props.questions[this.props.currentQuestion].answer}
 			    	currentQuestion = {this.props.currentQuestion}
+			    	dispatch={this.props.dispatch}
+			    	showTimePicker={this.props.showTimePicker}
 			    />
 				<ButtonBar currentQuestion = {this.props.currentQuestion} dispatch={this.props.dispatch}/>
 			</View>

@@ -42,22 +42,30 @@ export const styles = StyleSheet.create({
   numberText: {
     color: 'grey'
   },
-  questionOptions: {
-    flex: 6,
+  radioButtonOptions: {
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    //backgroundColor: 'lavenderblush',
+    //backgroundColor: 'aquamarine',
     paddingLeft: 0,
     paddingTop: 0,
     paddingBottom: 10,
     paddingRight: 15,
   },
+  questionOptions: {
+    flex: 6,
+    
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    //backgroundColor: 'lavenderblush',
+    
+  },
 
   optionView: {
     flex:1,
     flexDirection: 'row',
-    padding: 10,
+    paddingLeft: 10,
     //borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'flex-start'
@@ -65,8 +73,22 @@ export const styles = StyleSheet.create({
 
   optionText: {
     color: 'grey',
-    fontSize: 20,
+    fontSize: 19,
   },
+
+  timePickerView: {
+    flex: 1,
+    flexDirection: 'column',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    //backgroundColor: 'brown',
+  },
+   fab: {
+    width: 180,
+    backgroundColor: "#739CCF",
+    fontSize:20,
+
+   },
 
   buttonBar: {
     flex:3, 
