@@ -26,8 +26,8 @@ export default class QuestionOptions extends React.Component {
 	}
 
 	onConfirm(time) {
-		this.props.dispatch(questionAnswer(this.props.currentQuestion, time));
 		this.props.dispatch(hideTimePicker());
+		this.props.dispatch(questionAnswer(this.props.currentQuestion, time));
 	}
 
 	onChangeRadio(value) {

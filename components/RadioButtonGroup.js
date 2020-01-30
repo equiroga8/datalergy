@@ -4,6 +4,7 @@ import { RadioButton } from 'react-native-paper';
 import { styles } from '../styles/StyleSheet';
 
 export default class RadioButtonGroup extends React.Component {
+
   render() {
 	var counter = 1;
 	var options = this.props.options.map((option, index) => {
@@ -14,7 +15,6 @@ export default class RadioButtonGroup extends React.Component {
 		          				key={"rb" + index} 
 		          				uncheckedColor="grey" 
 		          				color="#739CCF"
-								onPress={this.props.onChangeRadio}
 		          				/>
 		          			<Text style={styles.optionText} key={"text" + index}>{option}</Text>
 		        		</View>
@@ -28,7 +28,7 @@ export default class RadioButtonGroup extends React.Component {
 			
 			<RadioButton.Group 
 				value={this.props.answer}
-				onValueChange={this.props.onChangeRadio} 
+				onValueChange={value => this.props.onChangeRadio(value)} 
 			>
 			
 		        {options}

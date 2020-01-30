@@ -83,12 +83,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     //backgroundColor: 'brown',
   },
-   fab: {
-    width: 180,
-    backgroundColor: "#739CCF",
-    fontSize:20,
-
-   },
+  timeText: {
+     color: 'grey',
+    fontSize: 50,
+  },
 
   buttonBar: {
     flex:3, 

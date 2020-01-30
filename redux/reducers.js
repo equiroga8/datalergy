@@ -26,8 +26,9 @@ function currentQuestion(state = 0, action = {}) {
 function questions(state = [], action = {}) {
 	switch(action.type) {
 		case QUESTION_ANSWER:
-			state[action.payload.index].answer = action.payload.answer;
-			return state;
+			const newState = Object.assign({}, state);
+			newState[action.payload.index].answer = action.payload.answer;
+			return newState;
 		default:
 			return state;
 	}
@@ -40,8 +41,10 @@ function loading(state = false, action = {}) {
 function showTimePicker(state = false, action = {}) {
 	switch (action.type) {
 		case SHOW_TIME_PICKER:
+			console.log("SHOW_TIME_PICKER");
 			return true;
 		case HIDE_TIME_PICKER:
+			console.log("HIDE_TIME_PICKER");
 			return false; 
 		default:
 			return state;

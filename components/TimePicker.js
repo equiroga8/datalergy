@@ -36,16 +36,13 @@ export default class TimePicker extends React.Component {
 	                mode="time"
 	                is24Hour={false}
 	                display="default"
-           		/>	
-				<FAB
-				    style={styles.fab}
-				    large
-					color="ghostwhite"
-				    icon="clock-outline"
-				    label ={this.formatAMPM(this.props.answer)}
-				    onPress={this.props.onPress}
-	  			/>	       		
+           		/>
+
+				<Text style={styles.timeText} onPress={this.props.onPress}> 
+					{this.formatAMPM(this.props.answer)} 
+				</Text>
+
 	       	</View>
 	    );
-  	}
+  	}     		
 }
