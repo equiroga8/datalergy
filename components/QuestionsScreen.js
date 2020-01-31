@@ -9,19 +9,36 @@ import ButtonBar from './ButtonBar';
 import Statusbar from './Statusbar';
 import QuestionOptions from './QuestionOptions';
 
+import GoogleSheet, { append } from './GoogleSheetAPI.js';
+
 class QuestionsScreen extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.onPress = this.onPress.bind(this);
+		this.appendData = this.appendData.bind(this);
 
 	}
 
 	onPress(){
 		this.props.navigation.navigate('StartScreen');
 	}
+
+
+	appendData() {
+
+		const data = {
+		        "values": [ "a", "b", "c", "d", "e", "f"
+		    ]
+		}
+
+		append(data,"symptoms!A1%3AF1").then(item => {
+			console.log("inside then");
+      		console.log(JSON.stringify(item));
+    	}).catch(e => console.log(e))
+	}
+
 	render() {
-		console.log(this.props.questions)
 		return (
 			<View style={styles.questionsView}>
 				<Statusbar />
@@ -40,6 +57,21 @@ class QuestionsScreen extends React.Component {
 			    	showTimePicker={this.props.showTimePicker}
 			    />
 				<ButtonBar currentQuestion = {this.props.currentQuestion} dispatch={this.props.dispatch}/>
+				<Button mode="contained" 
+					dark={true} 
+					onPress= {this.appendData} 
+					color="#739CCF" 
+					disabled={this.props.isDisabled}
+				>
+    				sheets
+  				</Button>
+  				<GoogleSheet
+			        credentialsDetails={{
+			          redirectUrl: 'http://localhost',
+			          clientId,
+			        }}
+			        spreadsheetId= {spreadSheetId}
+			     />
 			</View>
 		);
 	}
