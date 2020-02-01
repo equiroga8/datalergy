@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-
-import { QUESTION_ANSWER, CHANGE_QUESTION, SUBMIT, SHOW_TIME_PICKER, HIDE_TIME_PICKER } from './actions';
+import { questions as qsData } from "../assets/questions";
+import { QUESTION_ANSWER, CHANGE_QUESTION, SUBMIT, SHOW_TIME_PICKER, HIDE_TIME_PICKER, FINISH } from './actions';
 
 
 function finished(state = false, action = {}) {
@@ -18,6 +18,8 @@ function currentQuestion(state = 0, action = {}) {
 				newState = state - 1;
 			}
 			return newState;
+		case FINISH:
+			return 0;	
 		default:
 			return state;
 	}
@@ -29,6 +31,8 @@ function questions(state = [], action = {}) {
 			const newState = Object.assign({}, state);
 			newState[action.payload.index].answer = action.payload.answer;
 			return newState;
+			case FINISH:
+			return [...qsData];
 		default:
 			return state;
 	}

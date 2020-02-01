@@ -9,6 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-
+.expo-shared/
+/assets/data-key.json
 # macOS
 .DS_Store

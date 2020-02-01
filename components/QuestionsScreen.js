@@ -8,34 +8,37 @@ import AppBar from './AppBar';
 import ButtonBar from './ButtonBar';
 import Statusbar from './Statusbar';
 import QuestionOptions from './QuestionOptions';
-
-import GoogleSheet, { append } from './GoogleSheetAPI.js';
+import { finish } from '../redux/actions';
 
 class QuestionsScreen extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.onPress = this.onPress.bind(this);
 		this.appendData = this.appendData.bind(this);
-
 	}
 
-	onPress(){
-		this.props.navigation.navigate('StartScreen');
-	}
-
-
-	appendData() {
-
+	async appendData() {
+		
 		const data = {
-		        "values": [ "a", "b", "c", "d", "e", "f"
-		    ]
-		}
+			"itchiness": this.props.questions[0].answer,
+			"redness": this.props.questions[1].answer,
+			"sneezes": this.props.questions[2].answer,
+			"wakeUpTime": this.props.questions[3].answer,
+			"medication": this.props.questions[4].options[this.props.questions[4].answer - 1]
+		};
 
-		append(data,"symptoms!A1%3AF1").then(item => {
-			console.log("inside then");
-      		console.log(JSON.stringify(item));
-    	}).catch(e => console.log(e))
+		const response = await fetch('https://us-central1-datalergy.cloudfunctions.net/submitData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(data)
+        });
+
+		this.props.dispatch(finish());
+
+       	this.props.navigation.navigate('StartScreen');
+
 	}
 
 	render() {
@@ -43,7 +46,13 @@ class QuestionsScreen extends React.Component {
 			<View style={styles.questionsView}>
 				<Statusbar />
 				<AppBar navigation={this.props.navigation}/>
-				<View><ProgressBar progress={(this.props.currentQuestion + 1)/5} color="red"/></View>
+				<View>
+					<ProgressBar 
+						progress={(this.props.currentQuestion + 1)/5} 
+						color="red" 
+						indeterminate = {false}
+					/>
+				</View>
 			    
 			    <QuestionTitle 
 			    	question={this.props.questions[this.props.currentQuestion].question} 
@@ -56,22 +65,11 @@ class QuestionsScreen extends React.Component {
 			    	dispatch={this.props.dispatch}
 			    	showTimePicker={this.props.showTimePicker}
 			    />
-				<ButtonBar currentQuestion = {this.props.currentQuestion} dispatch={this.props.dispatch}/>
-				<Button mode="contained" 
-					dark={true} 
-					onPress= {this.appendData} 
-					color="#739CCF" 
-					disabled={this.props.isDisabled}
-				>
-    				sheets
-  				</Button>
-  				<GoogleSheet
-			        credentialsDetails={{
-			          redirectUrl: 'http://localhost',
-			          clientId,
-			        }}
-			        spreadsheetId= {spreadSheetId}
-			     />
+				<ButtonBar 
+					currentQuestion = {this.props.currentQuestion} 
+					dispatch={this.props.dispatch}
+					appendData={this.appendData}
+				/>
 			</View>
 		);
 	}

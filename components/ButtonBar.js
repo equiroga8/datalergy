@@ -34,7 +34,7 @@ export default class ButtonBar extends React.Component {
 				/>
   				
 				<ActionButton buttonName={(currNum === 4) ? "Submit" : "Next"}
-					buttonPress={this.buttonPress} 
+					buttonPress={(currNum === 4) ? this.props.appendData : this.buttonPress} 
 				/>
   		
 			</View>
