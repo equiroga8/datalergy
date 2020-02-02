@@ -16,6 +16,7 @@ class QuestionsScreen extends React.Component {
 		this.appendData = this.appendData.bind(this);
 	}
 
+
 	async appendData() {
 
 		this.props.dispatch(submit());

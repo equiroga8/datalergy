@@ -4,9 +4,9 @@
     "slug": "Datalergy",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "androidStatusBar": {
-            "barStyle": "dark-content",
-            "backgroundColor": "#739CCF"
+    "android": {
+      "package": "com.equiroga8.datalergy",
+      "versionCode": 2
     },
     "platforms": [
       "ios",
