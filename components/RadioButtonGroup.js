@@ -17,7 +17,13 @@ export default class RadioButtonGroup extends React.Component {
 			          				uncheckedColor="grey" 
 			          				color="#739CCF"
 			          				/>
-			          			<Text style={styles.optionText} key={"text" + index}>{option}</Text>
+			          			<Text 
+			          				style={styles.optionText} 
+			          				key={"text" + index}
+			          				onPress={() => this.props.onChangeRadio(index + 1)}
+			          			>
+			          				{option}
+			          			</Text>
 			        		</View>
 						);
 				});

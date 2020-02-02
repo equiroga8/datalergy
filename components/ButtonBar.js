@@ -29,12 +29,13 @@ export default class ButtonBar extends React.Component {
 	    return (
 	    	
 			<View style={styles.buttonBar}>
-				<ActionButton buttonName="Previous" isDisabled={currNum === 0} 
+				<ActionButton buttonName="Previous" isDisabled={currNum === 0 || this.props.loading} 
 					buttonPress={this.buttonPress}
 				/>
   				
 				<ActionButton buttonName={(currNum === 4) ? "Submit" : "Next"}
-					buttonPress={(currNum === 4) ? this.props.appendData : this.buttonPress} 
+					buttonPress={(currNum === 4) ? this.props.appendData : this.buttonPress}
+					isDisabled={this.props.loading} 
 				/>
   		
 			</View>

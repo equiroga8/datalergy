@@ -34,7 +34,6 @@ export default class ReduxProvider extends React.Component {
 
 		this.initialState = {
 
-			finished: false,  
 			loading: false,
 			currentQuestion: 0,
 			questions: [...questions],

@@ -24,6 +24,13 @@ export const styles = StyleSheet.create({
     flex:1,
     paddingTop: StatusBar.currentHeight || 0
   },
+  progressView: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingTop: 5
+  },
   questionTitle: {
     flex:1,
     flexDirection: 'column',

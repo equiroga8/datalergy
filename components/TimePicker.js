@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { FAB } from 'react-native-paper';
 import { styles } from '../styles/StyleSheet';
 
 export default class TimePicker extends React.Component {

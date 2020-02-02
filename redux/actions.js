@@ -14,7 +14,7 @@ export function next(buttonAction) {
 }
 
 export function submit(answer, userAnswer) {
-	return { type: SUBMIT, payload: { answer, userAnswer}};
+	return { type: SUBMIT};
 }
 
 export function showTimePicker() {

@@ -1,14 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, ProgressBar } from 'react-native-paper';
 import { styles } from '../styles/StyleSheet';
 import QuestionTitle from './QuestionTitle';
 import AppBar from './AppBar';
 import ButtonBar from './ButtonBar';
 import Statusbar from './Statusbar';
 import QuestionOptions from './QuestionOptions';
-import { finish } from '../redux/actions';
+import { finish, submit } from '../redux/actions';
 
 class QuestionsScreen extends React.Component {
 
@@ -18,12 +17,14 @@ class QuestionsScreen extends React.Component {
 	}
 
 	async appendData() {
-		
+
+		this.props.dispatch(submit());
+
 		const data = {
 			"itchiness": this.props.questions[0].answer,
 			"redness": this.props.questions[1].answer,
 			"sneezes": this.props.questions[2].answer,
-			"wakeUpTime": this.props.questions[3].answer,
+			"wakeUpTime": this.props.questions[3].answer.toLocaleTimeString(),
 			"medication": this.props.questions[4].options[this.props.questions[4].answer - 1]
 		};
 
@@ -34,26 +35,20 @@ class QuestionsScreen extends React.Component {
             },
             body: JSON.stringify(data)
         });
-
 		this.props.dispatch(finish());
-
        	this.props.navigation.navigate('StartScreen');
-
 	}
 
 	render() {
 		return (
 			<View style={styles.questionsView}>
 				<Statusbar />
-				<AppBar navigation={this.props.navigation}/>
-				<View>
-					<ProgressBar 
-						progress={(this.props.currentQuestion + 1)/5} 
-						color="red" 
-						indeterminate = {false}
-					/>
-				</View>
-			    
+				<AppBar 
+					navigation={this.props.navigation}
+					currentQuestion={this.props.currentQuestion}
+					loading={this.props.loading}
+					dispatch={this.props.dispatch}
+				/>
 			    <QuestionTitle 
 			    	question={this.props.questions[this.props.currentQuestion].question} 
 			    	currentQuestion = {	this.props.currentQuestion}
@@ -69,6 +64,7 @@ class QuestionsScreen extends React.Component {
 					currentQuestion = {this.props.currentQuestion} 
 					dispatch={this.props.dispatch}
 					appendData={this.appendData}
+					loading={this.props.loading}
 				/>
 			</View>
 		);

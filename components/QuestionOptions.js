@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { RadioButton } from 'react-native-paper';
+import { View } from 'react-native';
 import { styles } from '../styles/StyleSheet';
 import RadioButtonGroup from './RadioButtonGroup';
 import TimePicker from './TimePicker';
