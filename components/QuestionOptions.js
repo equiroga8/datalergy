@@ -25,8 +25,10 @@ export default class QuestionOptions extends React.Component {
 	}
 
 	onConfirm(time) {
+
 		this.props.dispatch(hideTimePicker());
 		this.props.dispatch(questionAnswer(this.props.currentQuestion, time));
+	
 	}
 
 	onChangeRadio(value) {
@@ -35,24 +37,47 @@ export default class QuestionOptions extends React.Component {
 
   	render() {
 
-	  	var isTimeSelect = 3 === this.props.currentQuestion;
-	    return (
+	  	var isWakeTimeSelect = 5 === this.props.currentQuestion;
+	  	var isBedTimeSelect = 4 === this.props.currentQuestion;
 
+	    return (
+			
 			<View style={styles.questionOptions}>
 				
-				{!isTimeSelect && <RadioButtonGroup  
+				{!isBedTimeSelect && !isWakeTimeSelect && <RadioButtonGroup  
 									options={this.props.options}
 									answer={this.props.answer}
 									onChangeRadio={this.onChangeRadio}
 									/>}
 
-				{isTimeSelect && <TimePicker 
-									onPress={this.onPress} 
-									showTimePicker={this.props.showTimePicker}
-									onCancel={this.onCancel}
-									onConfirm={this.onConfirm}  
-									answer={this.props.answer}
-									/>}
+				{isBedTimeSelect && 
+						<View style={styles.timePickerView}>							
+							<TimePicker
+								isWake={false}
+								onPress={this.onPress} 
+								showTimePicker={this.props.showTimePicker}
+								onCancel={this.onCancel}
+								onConfirm={this.onConfirm}  
+								answer={this.props.answer}
+							/>
+						</View>
+				}
+
+
+				{isWakeTimeSelect && 
+						<View style={styles.timePickerView}>							
+							<TimePicker 	
+								isWake={true}
+								onPress={this.onPress} 
+								showTimePicker={this.props.showTimePicker}
+								onCancel={this.onCancel}
+								onConfirm={this.onConfirm}  
+								answer={this.props.answer}
+							/>
+						</View>
+				}
+
+
 				
 	       	</View>
 	    );

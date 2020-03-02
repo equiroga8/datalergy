@@ -33,8 +33,8 @@ export default class ButtonBar extends React.Component {
 					buttonPress={this.buttonPress}
 				/>
   				
-				<ActionButton buttonName={(currNum === 4) ? "Submit" : "Next"}
-					buttonPress={(currNum === 4) ? this.props.appendData : this.buttonPress}
+				<ActionButton buttonName={(currNum === 6) ? "Submit" : "Next"}
+					buttonPress={(currNum === 6) ? this.props.appendData : this.buttonPress}
 					isDisabled={this.props.loading} 
 				/>
   		

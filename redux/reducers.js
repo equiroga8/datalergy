@@ -33,11 +33,14 @@ function questions(state = [], action = {}) {
 			nState[0].answer = 1;
 			nState[1].answer = 1;
 			nState[2].answer = 1;
-			nState[4].answer = 1;
-			var defaultTime = new Date();
-			defaultTime.setHours(7,0,0,0)
-			nState[3].answer = defaultTime;
-				
+			nState[3].answer = 1;
+			var bedTime = new Date();
+			bedTime.setHours(23,0,0,0)
+			var wakeTime = new Date();
+			wakeTime.setHours(7,0,0,0)
+			nState[4].answer = bedTime;
+			nState[5].answer = wakeTime;
+			nState[6].answer = 1;
 			return nState;
 		default:
 			return state;

@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     paddingTop: 5
   },
   questionTitle: {
-    flex:1,
+    flex:2,
     flexDirection: 'column',
     paddingLeft: 15,
     paddingTop: 10,
@@ -40,6 +40,16 @@ export const styles = StyleSheet.create({
     paddingRight: 15,
     //backgroundColor: 'lightgreen',
     justifyContent: 'space-around'
+  },
+
+  questionOrder: {
+    flex:1,
+    flexDirection: 'column',
+  },
+  questionContent: {
+    flex:2,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
 
   questionText: {
@@ -61,8 +71,7 @@ export const styles = StyleSheet.create({
     paddingRight: 15,
   },
   questionOptions: {
-    flex: 6,
-    
+    flex: 12,
     justifyContent: 'center',
     alignItems: 'flex-start',
     //backgroundColor: 'lavenderblush',
@@ -90,13 +99,39 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     //backgroundColor: 'brown',
   },
+
+  wakeTP: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+   bedTP: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+
+  sunriseIcon: {
+    width: 39,
+    height: 39,
+    marginRight: 10,
+  },
+
+  sleepIcon: {
+    width: 35,
+    height: 35,
+    marginRight: 10
+  },
+
   timeText: {
      color: 'grey',
     fontSize: 50,
   },
 
   buttonBar: {
-    flex:3, 
+    flex:4, 
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',

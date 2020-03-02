@@ -24,9 +24,11 @@ class QuestionsScreen extends React.Component {
 		const data = {
 			"itchiness": this.props.questions[0].answer,
 			"redness": this.props.questions[1].answer,
-			"sneezes": this.props.questions[2].answer,
-			"wakeUpTime": this.props.questions[3].answer.toLocaleTimeString(),
-			"medication": this.props.questions[4].options[this.props.questions[4].answer - 1]
+			"rheum": this.props.questions[2].answer,
+			"sneezes": this.props.questions[3].answer,
+			"wakeUpTime": this.props.questions[4].answer.toLocaleTimeString(),
+			"bedTime": this.props.questions[5].answer.toLocaleTimeString(),
+			"medication": this.props.questions[6].options[this.props.questions[6].answer - 1]
 		};
 
 		const response = await fetch('https://us-central1-datalergy.cloudfunctions.net/submitData', {

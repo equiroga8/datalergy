@@ -25,7 +25,7 @@ export default class AppBar extends React.Component {
 				 	<Appbar.Content title="Datalergy"/>
 				</Appbar>
 				<Bar 
-					progress={(this.props.currentQuestion + 1)/5}
+					progress={(this.props.currentQuestion + 1)/7}
 					width={null}
 					indeterminate={this.props.loading}
 					borderWidth={0}
